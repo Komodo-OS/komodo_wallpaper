@@ -88,20 +88,14 @@ class _ImageViewState extends State<ImageView> {
                                 border:
                                     Border.all(color: Colors.white24, width: 1),
                                 borderRadius: BorderRadius.circular(40),
-                                gradient: LinearGradient(
-                                    colors: [
-                                      Color(0x36FFFFFF),
-                                      Color(0x0FFFFFFF)
-                                    ],
-                                    begin: FractionalOffset.topLeft,
-                                    end: FractionalOffset.bottomRight)),
+                                    color: Colors.greenAccent),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Text(
                                   "Set Wallpaper",
                                   style: TextStyle(
-                                      color: Colors.white70,
+                                      color: Colors.black87,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500),
                                 ),
@@ -113,7 +107,7 @@ class _ImageViewState extends State<ImageView> {
                                       ? "Image will open in new tab to download"
                                       : "Image will be saved in gallery",
                                   style: TextStyle(
-                                      fontSize: 8, color: Colors.white70),
+                                      fontSize: 8, color: Colors.black87),
                                 ),
                               ],
                             )),
@@ -157,12 +151,9 @@ class _ImageViewState extends State<ImageView> {
 
   _askPermission() async {
     if (Platform.isIOS) {
-      /*Map<PermissionGroup, PermissionStatus> permissions =
-          */await PermissionHandler()
-              .requestPermissions([PermissionGroup.photos]);
+       await Permission.photos.request();
     } else {
-     /* PermissionStatus permission = */await PermissionHandler()
-          .checkPermissionStatus(PermissionGroup.storage);
+       await Permission.storage.request();
     }
   }
 }

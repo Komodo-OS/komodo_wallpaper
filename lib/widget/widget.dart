@@ -23,27 +23,28 @@ Widget wallPaper(List<PhotosModel> listPhotos, BuildContext context) {
                   context,
                   MaterialPageRoute(
                       builder: (context) => ImageView(
-                            imgPath: photoModel.src.portrait,
+                            imgPath: photoModel.wallpaper,
                           )));
             },
             child: Hero(
-              tag: photoModel.src.portrait,
+              tag: photoModel.wallpaper,
               child: Container(
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: kIsWeb
                         ? Image.network(
-                            photoModel.src.portrait,
+                            photoModel.wallpaper,
                             height: 50,
                             width: 100,
                             fit: BoxFit.cover,
                           )
                         : CachedNetworkImage(
-                            imageUrl: photoModel.src.portrait,
+                            imageUrl: photoModel.wallpaper,
                             placeholder: (context, url) => Container(
                                   color: Color(0xfff5f8fd),
                                 ),
-                            fit: BoxFit.cover)),
+                            fit: BoxFit.cover,
+                            )),
               ),
             ),
           ));
@@ -56,12 +57,12 @@ Widget brandName() {
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
       Text(
-        "Wallpaper",
-        style: TextStyle(color: Colors.black87, fontFamily: 'Overpass'),
+        "Komodo",
+        style: TextStyle(color: Colors.greenAccent, fontFamily: 'Overpass'),
       ),
       Text(
-        "Hub",
-        style: TextStyle(color: Colors.blue, fontFamily: 'Overpass'),
+        "Walls",
+        style: TextStyle(color: Colors.black87, fontFamily: 'Overpass'),
       )
     ],
   );
