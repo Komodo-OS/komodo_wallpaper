@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 //import 'dart:js' as js;
 
 class ImageView extends StatefulWidget {
@@ -88,12 +89,12 @@ class _ImageViewState extends State<ImageView> {
                                 border:
                                     Border.all(color: Colors.white24, width: 1),
                                 borderRadius: BorderRadius.circular(40),
-                                    color: Colors.greenAccent),
+                                color: Colors.greenAccent),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Text(
-                                  "Set Wallpaper",
+                                  "Download Wallpaper",
                                   style: TextStyle(
                                       color: Colors.black87,
                                       fontSize: 15,
@@ -141,19 +142,30 @@ class _ImageViewState extends State<ImageView> {
 
   _save() async {
     await _askPermission();
+    await toast("Downloading...");
     var response = await Dio().get(widget.imgPath,
         options: Options(responseType: ResponseType.bytes));
-    final result =
-        await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
-    print(result);
+    await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
+    await toast("Wallpaper downloaded successfully");
     Navigator.pop(context);
   }
 
   _askPermission() async {
     if (Platform.isIOS) {
-       await Permission.photos.request();
+      await Permission.photos.request();
     } else {
-       await Permission.storage.request();
+      await Permission.storage.request();
     }
+  }
+
+  toast(text) async {
+    await Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.greenAccent,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }

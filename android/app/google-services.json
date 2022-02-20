@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "40518244728",
+    "project_id": "komodowalls",
+    "storage_bucket": "komodowalls.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40518244728:android:69dd142c7ac4fa272b108d",
+        "android_client_info": {
+          "package_name": "org.komodo.wallpaper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40518244728-2s6ej8u2lsc9qqa1d5bq8vlu9mmhomg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCItyiKZDYpTuXIxHmP-Hoiampny-Fp0nI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40518244728-2s6ej8u2lsc9qqa1d5bq8vlu9mmhomg7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallpaper/home.dart';
+import 'package:komodowalls/home.dart';
 
 void main() {
   runApp(MyApp());
